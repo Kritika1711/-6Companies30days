@@ -1,0 +1,44 @@
+public int evalRPN(String[] tokens) {
+
+        Stack<String> st=new Stack<>();
+       if(tokens.length==1){
+           int num1=Integer.parseInt(tokens[0]);
+           return num1;
+       }
+        st.push(tokens[0]);st.push(tokens[1]);
+        for(int i=2;i<tokens.length;i++){
+            if(tokens[i].equals("+") || tokens[i].equals("/") ||tokens[i].equals("-") ||tokens[i].equals("*")){
+                int num1=Integer.parseInt(st.pop());int num2=Integer.parseInt(st.pop());
+                System.out.println(num1+" "+num2);
+                if(tokens[i].equals("+")){
+                    int x=num1+num2;
+                    String v=x+"";
+                    st.push(v);
+                    
+                }
+                if(tokens[i].equals("/")){
+                    int x=num2/num1;String v=x+"";
+                    st.push(v);
+                }
+                if(tokens[i].equals("*")){
+                    int x=num2*num1; String v=x+"";
+                    st.push(v);
+                }
+                if(tokens[i].equals("-")){
+                    int x=num2-num1; String v=x+"";
+                   st.push(v);
+                  }
+                 
+            }
+            else{
+                st.push((tokens[i]));
+            }
+             System.out.println(tokens[i]);
+        }
+            //  if(st.peek()=="+" || st.peek()=="/" || st.peek()=="-" ||st.peek()=="*")return 1;
+             int num1=Integer.parseInt(st.peek());
+             return num1;
+    
+
+
+    }
