@@ -1,0 +1,28 @@
+
+
+class Solution {
+    public String getHint(String secret, String guess) {
+        char[] x=secret.toCharArray();
+        char[] y=guess.toCharArray();
+          
+        int[] A=new int[26];
+        int[] B=new int[26];
+
+        int bull=0;
+        for(int i=0;i<x.length;i++){
+            if(x[i]==y[i])bull++;
+            A[x[i]-'0']++;
+             B[y[i]-'0']++;
+            // System.out.println(x[i]-'0');
+         }
+          Arrays.sort(x);Arrays.sort(y);
+          int same=0;
+          for(int i=0;i<26;i++){
+              same+=Math.min(A[i],B[i]);
+          }
+          int cows=same-bull;
+          String b="";
+          b+=bull+"A"+cows+"B";
+          return b;
+    }
+}
