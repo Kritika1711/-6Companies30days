@@ -1,0 +1,29 @@
+//use of backtracting
+step 1: k spaces required 
+step 2: fill them one by one (1-9)
+step 3: keep reducing k by 1 and n by i
+step 4: make base case when n==0 && k==ans1.size()
+
+
+class Solution {
+     List<List<Integer>> ans=new ArrayList<>();
+
+    public List<List<Integer>> combinationSum3(int k, int n) {
+     
+      List<Integer> ans1=new ArrayList<>();
+      help(1,k,n,new ArrayList<>(ans1));
+      return ans;
+    }
+    public void help(int index,int k,int n,List<Integer> ans1){
+        if(n==0 && k==ans1.size()){
+            
+            ans.add(new ArrayList(ans1));
+            return;
+        }
+         for(int i=index;i<=9;i++){
+                 ans1.add(i);
+                help(i+1,k,n-i,ans1);
+                ans1.remove(ans1.size()-1);
+            }
+    }
+}
