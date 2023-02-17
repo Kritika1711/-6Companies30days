@@ -1,0 +1,23 @@
+https://leetcode.com/problems/search-insert-position/description/?envType=study-plan&id=algorithm-i
+returning the index where target would be if it were inserted in order.
+
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int l=0;int r=nums.length;
+        while(l<r){
+            int m=(l+r)/2;
+            if(target==nums[m]){
+                return m;
+            }
+            else if(nums[m]>target){
+                r=m;
+            }
+            else{
+                l=m+1;
+            }
+                
+           
+        }
+        return l; 
+    }
+}
