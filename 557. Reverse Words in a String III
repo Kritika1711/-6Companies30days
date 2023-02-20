@@ -1,0 +1,31 @@
+class Solution {
+    public String reverseWords(String s) {
+        Stack<Character> st = new Stack<>();
+        char[] x = s.toCharArray();
+        int i=0;
+        while(x[i]==' '){
+              i++;
+        }
+        String sen="";
+        for(;i<s.length();i++){
+            String word="";
+            if(x[i]==' '){
+                while(st.size()>0){
+                    word+=st.pop();
+                }
+                sen+=" "+word;
+            }
+            else{
+                st.push(x[i]);
+            }
+
+        }
+        String word="";
+         while(st.size()>0){
+                    word+=st.pop();
+         }
+         sen+=" "+word;
+         String sent = sen.substring(1,sen.length());
+        return sent;
+    }
+}
