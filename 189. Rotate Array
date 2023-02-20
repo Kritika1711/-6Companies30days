@@ -18,3 +18,24 @@ class Solution {
  
     }
 }
+
+another o(1) sol
+class Solution {
+    public void rotate(int[] nums, int k) {
+       
+       int rotation = k % nums.length;
+        reverse(nums, 0, nums.length - 1);
+        reverse(nums, 0, rotation-1);
+        reverse(nums, rotation, nums.length - 1);
+ 
+    }
+    public int[] reverse(int[] nums,int start,int end){
+        while(start<end){
+            int elem=nums[start];
+            nums[start]=nums[end];
+            nums[end]=elem;
+            start++;end--;
+        }
+        return nums;
+    }
+}
