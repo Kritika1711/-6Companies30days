@@ -1,0 +1,22 @@
+MEDIUM PHONEPE-https://leetcode.com/problems/longest-substring-without-repeating-characters/description/?envType=study-plan&id=algorithm-i
+
+  public int lengthOfLongestSubstring(String s) {
+        char[] x=s.toCharArray();int n=x.length;int len=0;int maxlen=0;int j=0;
+        if(n==1)return 1;
+        for(int i=0;i<n;i++){
+            HashSet<Character> h=new HashSet<>();
+            h.add(x[i]);
+            for( j=i+1;j<n;j++){
+                if(!h.contains(x[j])){
+                    len++;h.add(x[j]);
+                }
+                else{
+                    len=(j-i);
+                    maxlen=Math.max(len,maxlen);break;
+                }
+            }
+            len=(j-i);
+            maxlen=Math.max(len,maxlen);
+        }
+        return maxlen;
+    }
