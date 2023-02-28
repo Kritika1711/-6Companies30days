@@ -1,0 +1,25 @@
+MEDIUM
+
+public ListNode removeNthFromEnd(ListNode head, int n) {
+         if(head==null)return null;
+        
+        ListNode temp = head; int size=0;
+          while(temp!=null){
+            temp=temp.next;
+            size++;
+        }
+      
+        
+       temp = head;
+        int N = size-n;
+        if(N!=0){
+        for(int i=0;i<N-1;i++){
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+        }
+        else{
+            head = head.next;
+        }
+        return head;
+    }
